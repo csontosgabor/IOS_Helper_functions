@@ -1,0 +1,27 @@
+//Simple function to get data from Locksmith easily
+
+import Foundation
+import Locksmith
+
+public func getDataFromLockSmith(_ searchFor: String, userAccountName: String) -> String? {
+    
+    guard let data = Locksmith.loadDataForUserAccount(userAccount: userAccountName) as? [String: AnyObject] else {
+        
+        print("Locksmith has no value @ useraccount")
+        return nil
+    }
+    
+    if let search = data[searchFor] as? String {
+        return search
+        
+    } else {
+        
+        print("there is no data like \(data)")
+        return nil
+    }
+    
+}
+
+
+
+
