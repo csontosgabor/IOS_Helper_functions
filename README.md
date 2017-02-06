@@ -1,2 +1,4 @@
 # IOS_Helper_functions
-Some helper often used function to reduce some development time
+
+Here I will upload some good functions, which could reduce some development time.
+
