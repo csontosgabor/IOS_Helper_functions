@@ -3,7 +3,7 @@
 import Foundation
 import Locksmith
 
-public func getDataFromLockSmith(_ searchFor: String, userAccountName: String) -> AnyObject? {
+public func getDataFromLockSmith(_ searchFor: String, userAccountName: String) -> String? {
     
     guard let data = Locksmith.loadDataForUserAccount(userAccount: userAccountName) as? [String: AnyObject] else {
         
