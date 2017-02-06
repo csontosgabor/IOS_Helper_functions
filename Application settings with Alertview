@@ -1,0 +1,37 @@
+
+import Foundation
+
+
+//MARK: AlertView to open Application Settings
+
+public func alertViewToOpenSettings(_ title: String?, message: String) {
+    
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alertController.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (UIAlertAction) in
+        openApplicationSettings()
+    }))
+    
+    alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+    
+    let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+    alertWindow.rootViewController = UIViewController()
+    alertWindow.windowLevel = UIWindowLevelAlert + 1;
+    alertWindow.makeKeyAndVisible()
+    alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+}
+
+
+
+
+//Open settings function
+public func openApplicationSettings() {
+    let urlObj = NSURL.init(string:UIApplicationOpenSettingsURLString)
+    if #available(iOS 10.0, *) {
+        UIApplication.shared.open(urlObj as! URL, options: [ : ], completionHandler: { Success in
+            
+        })
+    } else {
+        let success = UIApplication.shared.openURL(urlObj as! URL)
+        print("Open \(urlObj): \(success)")
+    }
+}
